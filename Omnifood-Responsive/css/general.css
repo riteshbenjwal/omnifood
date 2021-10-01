@@ -63,7 +63,12 @@ Medium: 11px
 }
 
 html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
   font-size: 62.5%;
+  overflow-x: hidden;
+
 }
 
 body {
@@ -71,55 +76,68 @@ body {
   line-height: 1;
   font-weight: 400;
   color: #555;
+  overflow-x: hidden;
 }
 
-/********************/
-/* General reusable Components  */
-/********************/
-
-.grid{
-  display: grid;
-  column-gap: 6.4rem;
-  row-gap: 9.6rem;
-  margin-bottom: 9.2rem;
-}
+/**************************/
+/* GENRAL REUSABLE COMPONENTS */
+/**************************/
 
 .container {
+  /* 1140px */
   max-width: 120rem;
   padding: 0 3.2rem;
   margin: 0 auto;
 }
 
-.grid-2-cols {
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+
+  /* margin-bottom: 9.6rem; */
+}
+
+/* .grid:last-child {
+  margin-bottom: 0;
+} */
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.grid-3-cols {
+.grid--3-cols {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-4-cols {
+.grid--4-cols {
   grid-template-columns: repeat(4, 1fr);
 }
 
-.grid-5-cols {
+.grid--5-cols {
   grid-template-columns: repeat(5, 1fr);
 }
 
-.grid-center-v {
+.grid--center-v {
   align-items: center;
 }
 
 .heading-primary,
-.heading-secondary {
+.heading-secondary,
+.heading-tertiary {
   font-weight: 700;
-  letter-spacing: -0.5px;
   color: #333;
+  /* color: #45260a; */
+  /* color: #343a40; */
+  letter-spacing: -0.5px;
 }
 
 .heading-primary {
   font-size: 5.2rem;
-
   line-height: 1.05;
   margin-bottom: 3.2rem;
 }
@@ -130,41 +148,42 @@ body {
   margin-bottom: 9.6rem;
 }
 
-.subheading {
-  display: block;
-  font-size: 2rem;
-  font-weight: 500;
-  color: #e67e22;
-  text-transform: uppercase;
-  margin-bottom: 1.6rem;
-  letter-spacing: 0.75px;
-}
-
 .heading-tertiary {
   font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 3.2rem;
 }
 
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
 .btn,
 .btn:link,
 .btn:visited {
   display: inline-block;
-  background-color: #e67e22;
-  /* color: #fff; */
+
   text-decoration: none;
   font-size: 2rem;
+  font-weight: 600;
   padding: 1.6rem 3.2rem;
   border-radius: 9px;
-  font-weight: 600;
 
+  /* Only necessary for .btn */
   border: none;
   cursor: pointer;
   font-family: inherit;
 
-  transition: background-color 0.3s;
+  /* Put transition on original "state" */
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
 }
-
 
 .btn--full:link,
 .btn--full:visited {
@@ -175,9 +194,7 @@ body {
 .btn--full:hover,
 .btn--full:active {
   background-color: #cf711f;
-  color: #fff;
 }
-
 
 .btn--outline:link,
 .btn--outline:visited {
@@ -188,28 +205,27 @@ body {
 .btn--outline:hover,
 .btn--outline:active {
   background-color: #fdf2e9;
-  /* border: ; */
 
-  /* Trick */
+  /* border: 3px solid #fff; */
+
+  /* Trick to add border inside */
   box-shadow: inset 0 0 0 3px #fff;
 }
 
-
-.btn--form{
-  background-color: #45260a ;
-  color: #fff;
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
   align-self: end;
   padding: 1.2rem;
 }
-.btn--form:hover{
-background-color: #fff;
-color: #555;
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
 }
 
-
-
 .link:link,
-.link:visited{
+.link:visited {
   display: inline-block;
   color: #e67e22;
   text-decoration: none;
@@ -219,9 +235,9 @@ color: #555;
 }
 
 .link:hover,
-.link:active{
-color: #cf711f;
-border-bottom: 1px solid transparent;
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
 }
 
 .list {
@@ -236,28 +252,23 @@ border-bottom: 1px solid transparent;
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  line-height: 1.2;
 }
 
 .list-icon {
   width: 3rem;
   height: 3rem;
-
   color: #e67e22;
 }
 
-*:focus{
+*:focus {
   outline: none;
-  /* outline: 4px dotted #e67e22;
-  outline-offset:8px; */
-  box-shadow: 0 0 0 0.8rem rgba(230, 125,34, 0.5);
+  /* outline: 4px dotted #e67e22; */
+  /* outline-offset: 8px; */
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
 }
 
-/* Helper classes  */
-
-.center-text{
-  text-align: center;
-}
-
+/* HELPER/SETTINGS CLASSES */
 .margin-right-sm {
   margin-right: 1.6rem !important;
 }
@@ -266,14 +277,10 @@ border-bottom: 1px solid transparent;
   margin-bottom: 4.8rem !important;
 }
 
-.mt{
-  margin-top: 9.6rem;
-}
-
-.mb{
-  margin-bottom: 9.6rem;
+.center-text {
+  text-align: center;
 }
 
 strong {
-  font-weight: 600;
+  font-weight: 500;
 }
